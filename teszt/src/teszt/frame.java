@@ -32,13 +32,8 @@ public class frame extends JFrame implements ActionListener {
     Font f = new Font("Arial", Font.PLAIN, 25);
     
     public frame(){
-        this.setTitle("Keret");
-        this.setSize(540,560);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setResizable(false);
-        
         try{
-            fajl = new File("C:\\Users\\Peti\\Desktop\\doksik\\szakdologzat\\logo_tr.png");
+            fajl = new File("src\\logo_tr.png");
             fis = new FileInputStream(fajl);
             tomb = new byte[(int)fajl.length()];
             fis.read(tomb);
@@ -72,7 +67,6 @@ public class frame extends JFrame implements ActionListener {
         btn4.addActionListener(this);
         
         tartalom = (JPanel)this.getContentPane();
-        //flo = new FlowLayout();
         tartalom.setLayout(null);
         
         tartalom.add(lbl);
@@ -81,6 +75,11 @@ public class frame extends JFrame implements ActionListener {
         tartalom.add(btn3);
         tartalom.add(btn4);
         
+        this.setTitle("Keret");
+        this.setSize(540,560);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setResizable(false);
+        this.setLocation(1000, 400);
         this.setVisible(true);
         
     }
@@ -92,13 +91,7 @@ public class frame extends JFrame implements ActionListener {
         
         switch(forras){
             case "Gene-Wise Scatterplot":
-        {
-            try {
                 Teszt.genewisescatterplot();
-            } catch (InterruptedException ex) {
-                Logger.getLogger(frame.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
                 break;
             case "Gene-Wise Distribution":
                 Teszt.genewisedistribution();
@@ -110,7 +103,7 @@ public class frame extends JFrame implements ActionListener {
                 Teszt.cellwisedistribution();
                 break;
             default: 
-                Teszt.cellwisedistribution();
+                break;
         }
     }
 }
